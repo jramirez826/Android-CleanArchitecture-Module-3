@@ -13,16 +13,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ImagesServicesImpl implements ImagesServices {
 
-    private static final String URL= "http://splashbase.co/";
+    private static final String URL = "http://splashbase.co/";
 
     @Override
-    public void getLatestImages(Observer<Boolean> observer) {
+    public void getLatestImages(final Observer<Object> observer) {
         Retrofit retrofit = new Retrofit.Builder().
                 baseUrl(URL).
                 addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        SplashbaseApi api  = retrofit.create(SplashbaseApi.class);
+        SplashbaseApi api = retrofit.create(SplashbaseApi.class);
 
         Call<Result> call = api.getImages();
 
@@ -30,6 +30,8 @@ public class ImagesServicesImpl implements ImagesServices {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
                 //todo: show the response.body() on the ui
+                observer.onNext(response.body());
+                observer.onComplete();
             }
 
             @Override
