@@ -2,10 +2,12 @@ package com.globant.equattrocchio.cleanarchitecture.mvp.presenter;
 
 import android.app.Activity;
 
+import com.globant.equattrocchio.cleanarchitecture.mvp.view.adapter.PicturesAdapter;
 import com.globant.equattrocchio.cleanarchitecture.util.bus.RxBus;
 import com.globant.equattrocchio.cleanarchitecture.mvp.view.ImagesView;
 import com.globant.equattrocchio.cleanarchitecture.util.bus.observers.CallServiceButtonObserver;
 import com.globant.equattrocchio.data.ImagesServicesImpl;
+import com.globant.equattrocchio.data.response.Result;
 import com.globant.equattrocchio.domain.GetLatestImagesUseCase;
 import com.google.gson.Gson;
 
@@ -38,6 +40,8 @@ public class ImagesPresenter {
             public void onNext(@NonNull Object o) {
                 loadFromPreferences();
                 view.showText(new Gson().toJson(o));
+                Result result = (Result) o;
+                view.setPicturesList(result.getImages());
             }
 
             @Override
