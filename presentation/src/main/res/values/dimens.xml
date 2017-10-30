@@ -3,4 +3,5 @@
     <dimen name="tv_height">200dp</dimen>
     <dimen name="btn_widht">368dp</dimen>
     <dimen name="btn_height">48dp</dimen>
+    <dimen name="dp_minor">8dp</dimen>
 </resources>
