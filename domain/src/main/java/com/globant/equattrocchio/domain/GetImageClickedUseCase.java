@@ -4,17 +4,17 @@ import com.globant.equattrocchio.domain.service.ImagesServices;
 
 import io.reactivex.observers.DisposableObserver;
 
-public class GetLatestImagesUseCase extends UseCase<Object,Void> {
+public class GetImageClickedUseCase extends UseCase<Object, Integer> {
 
     private ImagesServices imagesServices;
 
-    public GetLatestImagesUseCase(ImagesServices imagesServices) {
+    public GetImageClickedUseCase(ImagesServices imagesServices) {
         super();
         this.imagesServices = imagesServices;
     }
 
     @Override
-    void buildUseCaseObservable(DisposableObserver<Object> observer, Void aVoid) {
-        imagesServices.getLatestImages(observer);
+    void buildUseCaseObservable(DisposableObserver<Object> observer, Integer integer) {
+        imagesServices.getImageClicked(observer, integer);
     }
 }
