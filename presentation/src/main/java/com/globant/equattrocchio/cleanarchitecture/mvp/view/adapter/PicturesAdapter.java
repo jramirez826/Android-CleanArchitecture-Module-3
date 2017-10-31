@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.globant.equattrocchio.cleanarchitecture.R;
+import com.globant.equattrocchio.cleanarchitecture.util.bus.RxBus;
+import com.globant.equattrocchio.cleanarchitecture.util.bus.observers.CallServiceItemObserver;
 import com.globant.equattrocchio.data.response.Image;
 
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.globant.equattrocchio.cleanarchitecture.util.bus.observers.CallServiceItemObserver.*;
 
 public class PicturesAdapter extends RecyclerView.Adapter<PicturesAdapter.PicturesViewHolder> {
 
@@ -41,9 +45,17 @@ public class PicturesAdapter extends RecyclerView.Adapter<PicturesAdapter.Pictur
 
     @Override
     public void onBindViewHolder(PicturesViewHolder holder, int position) {
-        Image image = mImages.get(position);
+        final Image image = mImages.get(position);
         holder.labPrictureId.setText(String.valueOf(image.getId()));
         Glide.with(mContext).load(image.getUrl()).into(holder.imgPicture);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CallServiceItemClicked callServiceItemClicked = new CallServiceItemClicked();
+                callServiceItemClicked.pictureId = image.getId();
+                RxBus.post(callServiceItemClicked);
+            }
+        });
     }
 
     @Override

@@ -9,6 +9,7 @@ import com.globant.equattrocchio.cleanarchitecture.R;
 import com.globant.equattrocchio.cleanarchitecture.mvp.view.adapter.PicturesAdapter;
 import com.globant.equattrocchio.cleanarchitecture.util.bus.RxBus;
 import com.globant.equattrocchio.cleanarchitecture.util.bus.observers.CallServiceButtonObserver;
+import com.globant.equattrocchio.cleanarchitecture.util.bus.observers.CallServiceItemObserver;
 import com.globant.equattrocchio.data.response.Image;
 
 import java.util.List;
@@ -53,4 +54,8 @@ public class ImagesView extends ActivityView {
     public void showError() {
         tvlabel.setText(R.string.connection_error);
     }
+
+    public void callServiceItemClicked() {
+    }
+
 }
