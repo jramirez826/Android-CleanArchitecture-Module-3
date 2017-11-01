@@ -3,22 +3,31 @@ package com.globant.equattrocchio.data.response;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.activeandroid.annotation.Column;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import static android.R.attr.name;
+
+@com.activeandroid.annotation.Table(name = "Images")
 public class Image implements Parcelable{
+    @Column(name = "id")
     @SerializedName("id")
     @Expose
     private Integer id;
+    @Column(name = "url")
     @SerializedName("url")
     @Expose
     private String url;
+    @Column(name = "large_url")
     @SerializedName("large_url")
     @Expose
     private String largeUrl;
+    @Column(name = "source_id")
     @SerializedName("source_id")
     @Expose
     private Object sourceId;
+    @Column(name = "site")
     @SerializedName("site")
     @Expose
     private String site;

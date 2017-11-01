@@ -37,6 +37,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.github.bumptech.glide:glide:4.2.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile 'com.android.support:design:26.+'
     testCompile 'junit:junit:4.12'
     compile project(path: ':domain')
     compile project(':data')
